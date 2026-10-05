@@ -1,9 +1,12 @@
 import AppRoutes from "./routes/AppRoutes";
+import { GameProvider } from "./context/GameProvider";
 
 function App() {
   return (
     <>
-      <AppRoutes />
+      <GameProvider>
+        <AppRoutes />
+      </GameProvider>
     </>
   );
 }
