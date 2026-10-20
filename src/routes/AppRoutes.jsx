@@ -31,7 +31,7 @@ export default function AppRoutes() {
         <Route path="join" element={<JoinGame />}>
           <Route index element={<GameJoinRules />} />
         </Route>
-        <Route path=":gameId" element={<CurrentGame />} />
+        <Route path=":gameCode" element={<CurrentGame />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

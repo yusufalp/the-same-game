@@ -23,7 +23,7 @@ export default function HostGame() {
     try {
       const data = await hostGame(maxPlayers);
 
-      navigate(`/games/${data.game.game_id}`);
+      navigate(`/games/${data.game.gameCode}`);
     } catch (error) {
       console.error(error);
     }
