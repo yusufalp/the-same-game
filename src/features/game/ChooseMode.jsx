@@ -1,0 +1,20 @@
+import OptionLink from "../../components/OptionLink";
+import { ROUTES } from "../../constants/ROUTES";
+
+export default function ChooseMode() {
+  return (
+    <div className="space-y-4">
+      <h1 className="text-2xl font-semibold">What would you like to do?</h1>
+      <OptionLink
+        to={ROUTES.host}
+        title="Host a game"
+        description="Choose how many people play, then share a link."
+      />
+      <OptionLink
+        to={ROUTES.join}
+        title="Join a game"
+        description="Enter the code a host gave you."
+      />
+    </div>
+  );
+}
