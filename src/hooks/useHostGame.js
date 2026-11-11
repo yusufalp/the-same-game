@@ -1,34 +1,38 @@
-import { hostGame } from "../api/gameApi";
-import { useGameContext } from "../context/GameContext";
-import { useAnonymousUser } from "./useAnonymousUser";
+import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { apiRequest } from "../services/apiClient";
+import { ROUTES } from "../constants/ROUTES";
 
-export function useHostGame() {
-  const { setGame, setPlayers, setCurrentPlayer, setIsLoading, setError } =
-    useGameContext();
+// POST /api/games: create a game, then open its page.
+// Used on host screen, which is outside any game, so it does not use the context.
+//   const { hostGame, isHosting, error } = useHostGame();
+//   hostGame({ maxPlayers: 3 });
+export default function useHostGame() {
+  const navigate = useNavigate();
+  const [isHosting, setIsHosting] = useState(false);
+  const [error, setError] = useState(null);
 
-  const anonymousUserId = useAnonymousUser();
+  const hostGame = useCallback(
+    async ({ maxPlayers, name } = {}) => {
+      setIsHosting(true);
+      setError(null);
 
-  const handleHostGame = async (maxPlayers) => {
-    if (!anonymousUserId) return;
+      try {
+        const data = await apiRequest("/api/games", {
+          method: "POST",
+          body: { maxPlayers, name },
+        });
+        navigate(ROUTES.game(data.game.gameCode));
+        return data;
+      } catch (error) {
+        setError(error);
+        return null;
+      } finally {
+        setIsHosting(false);
+      }
+    },
+    [navigate],
+  );
 
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const data = await hostGame({ maxPlayers, anonymousUserId });
-
-      setGame(data.game);
-      setPlayers(data.players);
-      setCurrentPlayer(data.current_player);
-
-      return data;
-    } catch (error) {
-      setError(error.message || "Something went wrong");
-      throw error;
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  return { hostGame: handleHostGame };
+  return { hostGame, isHosting, error };
 }
