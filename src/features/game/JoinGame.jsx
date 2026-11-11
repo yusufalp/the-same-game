@@ -1,23 +1,10 @@
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import JoinGameForm from "../start/JoinGameForm";
 
 export default function JoinGame() {
-  const [gameId, setGameId] = useState("");
-
   return (
-    <div>
-      <h1>Join Game</h1>
-
-      <label htmlFor="gameId">Enter game code provided by host</label>
-      <input
-        type="text"
-        name="gameId"
-        id="gameId"
-        value={gameId}
-        onChange={(e) => setGameId(e.target.value)}
-      />
-
-      <Outlet />
+    <div className="space-y-6">
+      <h1 className="text-2xl font-semibold">Join a game</h1>
+      <JoinGameForm />
     </div>
   );
 }
