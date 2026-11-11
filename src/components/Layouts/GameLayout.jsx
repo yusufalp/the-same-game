@@ -1,14 +1,12 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
+import GameProvider from "../../context/GameProvider";
 
 export default function GameLayout() {
+  const { gameCode } = useParams();
+
   return (
-    <div>
-      <h1>What would you like to do?</h1>
-
-      <Link to="host">Host a game</Link>
-      <Link to="join">Join a game</Link>
-
+    <GameProvider key={gameCode} gameCode={gameCode}>
       <Outlet />
-    </div>
+    </GameProvider>
   );
 }

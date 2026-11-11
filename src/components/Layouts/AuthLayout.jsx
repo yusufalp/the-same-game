@@ -2,7 +2,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 
 export default function AuthLayout() {
   const location = useLocation();
-  
+
   const linkTo = location.pathname.includes("register") ? "login" : "register";
 
   return (
