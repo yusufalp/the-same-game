@@ -10,8 +10,10 @@ import HostGame from "../features/game/HostGame";
 import JoinGame from "../features/game/JoinGame";
 import CurrentGame from "../features/game/CurrentGame";
 import NotFoundPage from "../pages/NotFoundPage";
-import GameHostRules from "../pages/GameHostRules";
-import GameJoinRules from "../pages/GameJoinRules";
+// import GameHostRules from "../pages/GameHostRules";
+// import GameJoinRules from "../pages/GameJoinRules";
+import StartLayout from "../components/Layouts/StartLayout";
+import ChooseMode from "../features/game/ChooseMode";
 
 export default function AppRoutes() {
   return (
@@ -24,14 +26,15 @@ export default function AppRoutes() {
         <Route path="register" element={<Register />} />
       </Route> */}
 
-      <Route path="games" element={<GameLayout />}>
-        <Route path="host" element={<HostGame />}>
-          <Route index element={<GameHostRules />} />
+      <Route path="games">
+        <Route element={<StartLayout />}>
+          <Route index element={<ChooseMode />} />
+          <Route path="new" element={<HostGame />} />
+          <Route path="join" element={<JoinGame />} />
         </Route>
-        <Route path="join" element={<JoinGame />}>
-          <Route index element={<GameJoinRules />} />
+        <Route path=":gameCode" element={<GameLayout />}>
+          <Route index element={<CurrentGame />} />
         </Route>
-        <Route path=":gameCode" element={<CurrentGame />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
