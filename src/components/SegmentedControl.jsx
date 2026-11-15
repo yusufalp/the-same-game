@@ -17,7 +17,7 @@ export default function SegmentedControl({ label, options, value, onChange }) {
               onChange={() => onChange(option.value)}
               className="peer sr-only"
             />
-            <span className="block cursor-pointer px-5 py-2 text-sm text-neutral-700 hover:bg-neutral-50 peer-checked:bg-neutral-900 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-inset peer-focus-visible:ring-neutral-900">
+            <span className="block cursor-pointer px-5 py-2 text-sm text-neutral-700 hover:text-neutral-800 hover:bg-neutral-50 peer-checked:bg-neutral-900 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-inset peer-focus-visible:ring-neutral-900">
               {option.label}
             </span>
           </label>
