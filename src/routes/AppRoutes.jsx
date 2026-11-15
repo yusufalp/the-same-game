@@ -7,13 +7,13 @@ import About from "../pages/About";
 // import Register from "../pages/Register";
 import GameLayout from "../components/Layouts/GameLayout";
 import HostGame from "../features/game/HostGame";
-import JoinGame from "../features/game/JoinGame";
+// import JoinGame from "../features/game/JoinGame";
 import CurrentGame from "../features/game/CurrentGame";
 import NotFoundPage from "../pages/NotFoundPage";
 // import GameHostRules from "../pages/GameHostRules";
 // import GameJoinRules from "../pages/GameJoinRules";
 import StartLayout from "../components/Layouts/StartLayout";
-import ChooseMode from "../features/game/ChooseMode";
+// import ChooseMode from "../features/game/ChooseMode";
 
 export default function AppRoutes() {
   return (
@@ -28,9 +28,10 @@ export default function AppRoutes() {
 
       <Route path="games">
         <Route element={<StartLayout />}>
-          <Route index element={<ChooseMode />} />
+          <Route index element={<HostGame />} />
+          {/* <Route index element={<ChooseMode />} />
           <Route path="new" element={<HostGame />} />
-          <Route path="join" element={<JoinGame />} />
+          <Route path="join" element={<JoinGame />} /> */}
         </Route>
         <Route path=":gameCode" element={<GameLayout />}>
           <Route index element={<CurrentGame />} />

@@ -1,21 +1,22 @@
 import { useState } from "react";
-import useHostGame from "../../hooks/useHostGame";
+import useStartNewGame from "../../hooks/useStartNewGame";
+
 import SegmentedControl from "../../components/SegmentedControl";
 import Alert from "../../components/Alert";
 import Button from "../../components/Button";
 
-const PLAYER_OPTIONS = [1, 2, 3, 4].map((n) => ({
-  value: n,
-  label: String(n),
-}));
+const PLAYER_OPTIONS = [
+  { value: 1, label: "1 player" },
+  { value: 2, label: "2 players" },
+];
 
 export default function HostGameForm() {
-  const { hostGame, isHosting, error } = useHostGame();
-  const [maxPlayers, setMaxPlayers] = useState(2);
+  const { startNewGame, isStarting, error } = useStartNewGame();
+  const [maxPlayers, setMaxPlayers] = useState(1);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    hostGame({ maxPlayers });
+    startNewGame({ maxPlayers });
   };
 
   return (
@@ -29,14 +30,14 @@ export default function HostGameForm() {
 
       <p className="text-sm text-neutral-500">
         {maxPlayers === 1
-          ? "A solo game: you play on your own."
-          : "You will get a link to share. Open seats can be filled with computer players."}
+          ? "You play on your own."
+          : "Play against a computer."}
       </p>
 
       {error && <Alert>{error.message}</Alert>}
 
-      <Button type="submit" disabled={isHosting}>
-        {isHosting ? "Creating game..." : "Create Game"}
+      <Button type="submit" disabled={isStarting}>
+        {isStarting ? "Creating game..." : "Create Game"}
       </Button>
     </form>
   );
