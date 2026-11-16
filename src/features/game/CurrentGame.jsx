@@ -1,5 +1,4 @@
 import Container from "../../components/Container";
-import JsonViewer from "../../components/JsonViewer";
 import useComputerAutoplay from "../../hooks/useComputerAutoplay";
 
 import useGame from "../../hooks/useGame";
@@ -9,9 +8,10 @@ import GameStatus from "./GameStatus";
 import PlayerList from "./PlayerList";
 import TurnInfo from "./TurnInfo";
 import Board from "./Board";
+import getStatusMessage from "../../utils/getStatusMessage";
 
 export default function CurrentGame() {
-  const { state, game } = useGame();
+  const { game, you } = useGame();
 
   useComputerAutoplay();
 
@@ -20,15 +20,16 @@ export default function CurrentGame() {
   return (
     <Container>
       <GameHeader />
-      <GameStatus />
 
       {game.status === "playing" && <TurnInfo />}
+
+      <p className="text-neutral-700">{getStatusMessage(game, you)}</p>
 
       {game.status === "playing" && <Board />}
 
       <PlayerList />
 
-      <JsonViewer data={state} />
+      <GameStatus />
     </Container>
   );
 }
