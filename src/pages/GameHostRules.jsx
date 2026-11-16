@@ -1,13 +1,15 @@
 import { useState } from "react";
+import Button from "../components/Button";
 
 export default function GameHostRules() {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   return (
     <div>
-      <button onClick={() => setIsCollapsed((prev) => !prev)}>
+      <Button variant="info" onClick={() => setIsCollapsed((prev) => !prev)}>
         {isCollapsed ? "Show" : "Hide"} Rules
-      </button>
+      </Button>
+
       {!isCollapsed && (
         <p>
           You can invite others to join or play against AI. If you select 1 as

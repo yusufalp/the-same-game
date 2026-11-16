@@ -14,14 +14,13 @@ export default function EndGameButton() {
 
   if (!confirming) {
     return (
-      <Button variant="secondary" small onClick={() => setConfirming(true)}>
+      <Button variant="danger" small onClick={() => setConfirming(true)}>
         End this game
       </Button>
     );
   }
 
   const handleEnd = async () => {
-    console.log("handleEnd");
     await endGame();
     setConfirming(false);
   };
@@ -29,12 +28,11 @@ export default function EndGameButton() {
   return (
     <span className="flex items-center gap-2">
       <span className="text-sm text-neutral-600">End this game?</span>
-      <Button small disabled={isActing} onClick={handleEnd}>
+      <Button disabled={isActing} onClick={handleEnd}>
         Yes, end it
       </Button>
       <Button
         variant="secondary"
-        small
         disabled={isActing}
         onClick={() => setConfirming(false)}
       >

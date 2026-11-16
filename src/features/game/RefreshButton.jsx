@@ -7,7 +7,6 @@ export default function RefreshButton() {
   return (
     <Button
       variant="secondary"
-      small
       disabled={isRefreshing || isActing}
       onClick={() => refresh()}
     >

@@ -28,7 +28,7 @@ export default function GameLoadState() {
         </p>
         <div className="flex items-center gap-4 pt-1">
           {!notFound && (
-            <Button small onClick={() => refresh()}>
+            <Button onClick={() => refresh()}>
               Try again
             </Button>
           )}

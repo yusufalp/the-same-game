@@ -11,7 +11,6 @@ export default function AddComputerButton() {
   return (
     <Button
       variant="secondary"
-      small
       disabled={isActing}
       onClick={() => addComputers(1)}
     >
