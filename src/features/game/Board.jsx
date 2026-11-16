@@ -32,11 +32,16 @@ export default function Board() {
 
   return (
     <section className="space-y-3" aria-label="Game board">
+      <h2 className="text-lg font-semibold text-neutral-900">Board</h2>
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-lg font-semibold text-neutral-900">Board</h2>
         {you?.isYourTurn && (
           <Button onClick={spin} disabled={isActing || game.spin !== null}>
             {game.spin === null ? "Spin" : "Waiting turn"}
+          </Button>
+        )}
+        {you?.isYourTurn && faceUpCount === 2 && (
+          <Button variant="warning" onClick={endTurn} disabled={isActing}>
+            End my turn
           </Button>
         )}
       </div>
@@ -81,11 +86,6 @@ export default function Board() {
           );
         })}
       </div>
-      {you?.isYourTurn && faceUpCount === 2 && (
-        <Button variant="warning" onClick={endTurn} disabled={isActing}>
-          End my turn
-        </Button>
-      )}
     </section>
   );
 }
