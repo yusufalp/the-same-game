@@ -4,11 +4,7 @@ import useStartNewGame from "../../hooks/useStartNewGame";
 import SegmentedControl from "../../components/SegmentedControl";
 import Alert from "../../components/Alert";
 import Button from "../../components/Button";
-
-const PLAYER_OPTIONS = [
-  { value: 1, label: "1 player" },
-  { value: 2, label: "2 players" },
-];
+import { PLAYER_OPTIONS } from "../../constants/PLAYER_OPTIONS";
 
 export default function HostGameForm() {
   const { startNewGame, isStarting, error } = useStartNewGame();
