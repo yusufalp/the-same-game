@@ -1,4 +1,4 @@
-const variants = {
+const VARIANTS = {
   primary: "bg-blue-600 text-white hover:bg-blue-700",
   secondary: "border border-neutral-300 text-neutral-700 hover:bg-neutral-100",
   success: "bg-emerald-600 text-white hover:bg-emerald-700",
@@ -7,7 +7,7 @@ const variants = {
   info: "bg-sky-600 text-white hover:bg-sky-700",
 };
 
-const sizes = {
+const SIZES = {
   xs: "px-2.5 py-1 text-xs rounded",
   sm: "px-3 py-1.5 text-sm rounded-md",
   md: "px-4 py-2 text-sm rounded-md",
@@ -23,7 +23,6 @@ export default function Button({
   className = "",
   ...props
 }) {
-
   return (
     <button
       type={type}
@@ -31,7 +30,7 @@ export default function Button({
         rounded font-medium text-sm
         focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2
         disabled:cursor-not-allowed disabled:opacity-50 hover:cursor-pointer
-        ${sizes[size]} ${variants[variant]} ${className}
+        ${SIZES[size]} ${VARIANTS[variant]} ${className}
       `}
       {...props}
     >

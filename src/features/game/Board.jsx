@@ -3,8 +3,7 @@ import useEndTurn from "../../hooks/useEndTurn";
 import useGame from "../../hooks/useGame";
 import useSpin from "../../hooks/useSpin";
 import Button from "../../components/Button";
-
-const icons = ["✦", "●", "▲", "◆", "☀", "♫", "♣", "✿", "⬟", "☾", "♥", "✚"];
+import { CARD_ICONS } from "../../constants/CARD_ICONS";
 
 function CardDetails({ card }) {
   if (!card)
@@ -75,7 +74,7 @@ export default function Board() {
                 <CardDetails card={slot.card} />
               ) : (
                 <span aria-hidden="true" className="text-xl sm:text-2xl">
-                  {icons[(slot.slot * 7) % icons.length]}
+                  {CARD_ICONS[(slot.slot * 7) % CARD_ICONS.length]}
                 </span>
               )}
             </button>
