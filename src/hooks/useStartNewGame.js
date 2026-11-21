@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiRequest } from "../services/apiClient";
-import { ROUTES } from "../constants/ROUTES";
+import { ROUTES } from "../constants/routes";
 
 // Runs a 409 ("already done") answer as success: the step had already happened,
 // for example when its answer was lost the first time.

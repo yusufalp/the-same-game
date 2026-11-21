@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiRequest } from "../services/apiClient";
-import { ROUTES } from "../constants/ROUTES";
+import { ROUTES } from "../constants/routes";
 
 export default function useJoinGameByCode() {
   const navigate = useNavigate();

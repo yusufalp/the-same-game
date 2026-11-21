@@ -1,5 +1,5 @@
 import OptionLink from "../../components/OptionLink";
-import { ROUTES } from "../../constants/ROUTES";
+import { ROUTES } from "../../constants/routes";
 
 export default function ChooseMode() {
   return (

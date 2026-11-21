@@ -1,6 +1,6 @@
 import Alert from "../../components/Alert";
 import OptionLink from "../../components/OptionLink";
-import { ROUTES } from "../../constants/ROUTES";
+import { ROUTES } from "../../constants/routes";
 import useGame from "../../hooks/useGame";
 import EndGameButton from "./EndGameButton";
 // import JoinButton from "./JoinButton";

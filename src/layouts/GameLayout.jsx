@@ -1,5 +1,5 @@
 import { Outlet, useParams } from "react-router-dom";
-import GameProvider from "../../context/GameProvider";
+import GameProvider from "../context/GameProvider.jsx"
 
 export default function GameLayout() {
   const { gameCode } = useParams();

@@ -1,4 +1,4 @@
-import Container from "../../components/Container";
+import PageContainer from "../../components/PageContainer";
 import useComputerAutoplay from "../../hooks/useComputerAutoplay";
 
 import useGame from "../../hooks/useGame";
@@ -18,7 +18,7 @@ export default function CurrentGame() {
   if (!game) return <GameLoadState />;
 
   return (
-    <Container>
+    <PageContainer>
       <GameHeader />
 
       {game.status === "playing" && <TurnInfo />}
@@ -30,6 +30,6 @@ export default function CurrentGame() {
       <PlayerList />
 
       <GameStatus />
-    </Container>
+    </PageContainer>
   );
 }

@@ -1,4 +1,4 @@
-import JoinGameForm from "../start/JoinGameForm";
+import JoinGameForm from "./JoinGameForm";
 
 export default function JoinGame() {
   return (

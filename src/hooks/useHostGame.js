@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiRequest } from "../services/apiClient";
-import { ROUTES } from "../constants/ROUTES";
+import { ROUTES } from "../constants/routes";
 
 // POST /api/games: create a game, then open its page.
 // Used on host screen, which is outside any game, so it does not use the context.

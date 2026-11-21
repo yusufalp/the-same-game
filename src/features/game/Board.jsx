@@ -3,7 +3,7 @@ import useEndTurn from "../../hooks/useEndTurn";
 import useGame from "../../hooks/useGame";
 import useSpin from "../../hooks/useSpin";
 import Button from "../../components/Button";
-import { CARD_ICONS } from "../../constants/CARD_ICONS";
+import { CARD_ICONS } from "../../constants/cardIcons";
 
 function CardDetails({ card }) {
   if (!card)

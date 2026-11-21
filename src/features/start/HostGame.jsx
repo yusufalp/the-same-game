@@ -1,4 +1,4 @@
-import HostGameForm from "../start/HostGameForm";
+import HostGameForm from "./HostGameForm";
 
 export default function HostGame() {
   return (

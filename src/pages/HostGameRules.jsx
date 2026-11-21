@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../components/Button";
 
-export default function GameHostRules() {
+export default function HostGameRules() {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   return (

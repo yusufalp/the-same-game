@@ -1,16 +1,17 @@
 import { Link, Outlet } from "react-router-dom";
-import { ROUTES } from "../../constants/ROUTES";
-import Container from "../Container";
+
+import { ROUTES } from "../constants/routes";
+import PageContainer from "../components/PageContainer";
 
 export default function StartLayout() {
   return (
-    <Container>
+    <PageContainer>
       <header className="flex items-baseline justify-between">
         <Link to={ROUTES.start} className="font-semibold">
           The Same Game
         </Link>
       </header>
       <Outlet />
-    </Container>
+    </PageContainer>
   );
 }
