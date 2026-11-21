@@ -1,1 +1,510 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* === BACKGROUNDS & SURFACES === */
+  --color-bg: #ffffff; /* Main page background */
+  --color-surface: #f8fafc; /* Cards, modals, sidebars */
+  --color-surface-hover: #f1f5f9; /* Hover state for cards/list items */
+
+  /* === TEXT === */
+  --color-text: #0f172a; /* Main headings & body copy */
+  --color-text-muted: #64748b; /* Subtitles, timestamps, placeholders */
+  --color-text-inverted: #ffffff; /* Text on dark/colored buttons */
+
+  /* === BORDERS & DIVIDERS === */
+  --color-border: #e2e8f0; /* Card borders, horizontal dividers */
+  --color-input-border: #cbd5e1; /* Form input resting border */
+  --color-ring: #3b82f6; /* Focus outline ring */
+
+  /* === PRIMARY BRAND / BUTTONS === */
+  --color-primary: #2563eb; /* Primary button background */
+  --color-primary-hover: #1d4ed8; /* Primary button hover */
+  --color-secondary: #e2e8f0; /* Secondary/cancel button background */
+  --color-secondary-hover: #cbd5e1; /* Secondary button hover */
+
+  /* === STATUS & ALERTS === */
+  --color-success: #16a34a; /* Green text/icons */
+  --color-success-bg: #dcfce7; /* Soft green alert background */
+  --color-warning: #d97706; /* Amber text/icons */
+  --color-warning-bg: #fef3c7; /* Soft amber alert background */
+  --color-danger: #dc2626; /* Red error text / delete button */
+  --color-danger-bg: #fee2e2; /* Soft red alert background */
+  --color-info: #0284c7;
+  --color-info-bg: #e0f2fe;
+  --color-warning-strong: #b45309;
+  --color-success-strong: #15803d;
+  --color-danger-strong: #b91c1c;
+  --color-focus-offset: #ffffff;
+}
+
+/* === DARK MODE OVERRIDES === */
+.dark {
+  /* Backgrounds & Surfaces */
+  --color-bg: #09090b; /* Deep neutral dark */
+  --color-surface: #18181b; /* Slightly elevated card surface */
+  --color-surface-hover: #27272a; /* Hover state */
+
+  /* Text */
+  --color-text: #f8fafc; /* Crisp off-white */
+  --color-text-muted: #a1a1aa; /* Soft gray for secondary info */
+  --color-text-inverted: #ffffff; /* Keeps button text white */
+
+  /* Borders & Dividers */
+  --color-border: #27272a; /* Subtle dark border */
+  --color-input-border: #3f3f46; /* Slightly brighter input border */
+  --color-ring: #60a5fa; /* Lighter blue focus ring */
+
+  /* Primary Brand / Buttons */
+  --color-primary: #3b82f6; /* Slightly brighter blue for dark mode contrast */
+  --color-primary-hover: #60a5fa;
+  --color-secondary: #27272a;
+  --color-secondary-hover: #3f3f46;
+
+  /* Status & Alerts (Dark-tinted backgrounds) */
+  --color-success: #4ade80;
+  --color-success-bg: #052e16;
+  --color-warning: #fbbf24;
+  --color-warning-bg: #451a03;
+  --color-danger: #f87171;
+  --color-danger-bg: #450a0a;
+  --color-info: #38bdf8;
+  --color-info-bg: #082f49;
+  --color-warning-strong: #fbbf24;
+  --color-success-strong: #4ade80;
+  --color-danger-strong: #fca5a5;
+  --color-focus-offset: #09090b;
+}
+
+@layer base {
+  html {
+    @apply min-h-full;
+  }
+
+  body {
+    @apply min-h-screen bg-bg text-text antialiased;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+    --tw-ring-offset-color: var(--color-focus-offset);
+  }
+}
+
+@layer components {
+  /* =========================================
+     1. LAYOUTS & SURFACES
+     ========================================= */
+  .app-shell {
+    @apply min-h-screen bg-bg text-text antialiased;
+  }
+
+  .container-page {
+    @apply mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply rounded-xl border border-border bg-surface p-6 shadow-sm;
+  }
+
+  .card-hover {
+    @apply card transition-colors hover:bg-surface-hover;
+  }
+
+  .panel {
+    @apply rounded-lg border border-border bg-bg p-4;
+  }
+
+  .divider {
+    @apply my-4 border-t border-border;
+  }
+
+  /* =========================================
+     2. TYPOGRAPHY & LINKS
+     ========================================= */
+  .h1 {
+    @apply text-3xl font-bold tracking-tight text-text;
+  }
+
+  .h2 {
+    @apply text-2xl font-semibold tracking-tight text-text;
+  }
+
+  .h3 {
+    @apply text-lg font-semibold text-text;
+  }
+
+  .body-text {
+    @apply text-base text-text;
+  }
+
+  .muted {
+    @apply text-sm text-text-muted;
+  }
+
+  .link {
+    @apply font-medium text-primary underline-offset-4 hover:underline;
+  }
+
+  /* =========================================
+     3. BUTTONS (Variants & Sizes)
+     ========================================= */
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  /* Variants */
+  .btn-primary {
+    @apply btn bg-primary text-text-inverted hover:bg-primary-hover;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary text-text hover:bg-secondary-hover;
+  }
+
+  .btn-outline {
+    @apply btn border border-border bg-transparent text-text hover:bg-surface-hover;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-text hover:bg-surface-hover;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger text-text-inverted hover:opacity-90;
+  }
+
+  /* Sizes (Pair with any variant, e.g., "btn-primary btn-sm") */
+  .btn-xs {
+    @apply px-2.5 py-1 text-xs;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-icon {
+    @apply btn p-2;
+  }
+
+  /* =========================================
+     4. FORMS & INPUTS
+     ========================================= */
+  .form-group {
+    @apply space-y-1.5;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-text;
+  }
+
+  .input {
+    @apply w-full rounded-md border border-input-border bg-bg px-3 py-2 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .input-error {
+    @apply input border-danger focus:border-danger focus:ring-danger;
+  }
+
+  .textarea {
+    @apply input min-h-24 resize-y;
+  }
+
+  .select {
+    @apply input cursor-pointer;
+  }
+
+  .checkbox {
+    @apply h-4 w-4 rounded border-input-border bg-bg text-primary focus:ring-2 focus:ring-ring;
+  }
+
+  .help-text {
+    @apply text-xs text-text-muted;
+  }
+
+  .error-text {
+    @apply text-xs font-medium text-danger;
+  }
+
+  /* =========================================
+     5. BADGES & PILLS
+     ========================================= */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .badge-neutral {
+    @apply badge bg-secondary text-text;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary/15 text-primary;
+  }
+
+  .badge-success {
+    @apply badge bg-success-bg text-success;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning-bg text-warning;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger-bg text-danger;
+  }
+
+  /* =========================================
+     6. ALERTS & BANNERS
+     ========================================= */
+  .alert {
+    @apply rounded-lg border p-4 text-sm;
+  }
+
+  .alert-info {
+    @apply alert border-primary/20 bg-primary/10 text-text;
+  }
+
+  .alert-success {
+    @apply alert border-success/20 bg-success-bg text-success;
+  }
+
+  .alert-warning {
+    @apply alert border-warning/20 bg-warning-bg text-warning;
+  }
+
+  .alert-danger {
+    @apply alert border-danger/20 bg-danger-bg text-danger;
+  }
+
+  /* =========================================
+     7. NAVIGATION & TABLES
+     ========================================= */
+  .navbar {
+    @apply sticky top-0 z-40 flex h-16 items-center justify-between border-b border-border bg-bg/80 px-6 backdrop-blur;
+  }
+
+  .nav-item {
+    @apply rounded-md px-3 py-2 text-sm font-medium text-text-muted transition-colors hover:bg-surface-hover hover:text-text;
+  }
+
+  .nav-item-active {
+    @apply nav-item bg-surface text-text;
+  }
+
+  .table-wrap {
+    @apply w-full overflow-x-auto rounded-lg border border-border;
+  }
+
+  .table {
+    @apply w-full text-left text-sm text-text;
+  }
+
+  .thead {
+    @apply border-b border-border bg-surface text-xs uppercase text-text-muted;
+  }
+
+  .th {
+    @apply px-4 py-3 font-semibold;
+  }
+
+  .tr {
+    @apply border-b border-border transition-colors last:border-none hover:bg-surface-hover;
+  }
+
+  .td {
+    @apply px-4 py-3;
+  }
+
+  /* =========================================
+     8. COMMON APP LAYOUTS & CONTENT
+     ========================================= */
+  .stack-xs { @apply space-y-1; }
+  .stack-sm { @apply space-y-2; }
+  .stack { @apply space-y-4; }
+  .stack-lg { @apply space-y-6; }
+  .inline-actions { @apply flex flex-wrap items-center gap-2; }
+  .inline-actions-spread { @apply flex items-center justify-between gap-4; }
+
+  .page-container {
+    @apply mx-auto w-full max-w-xl space-y-8 px-4 py-10 text-text;
+  }
+
+  .page-heading {
+    @apply text-2xl font-semibold tracking-tight text-text;
+  }
+
+  .section-heading {
+    @apply text-lg font-semibold text-text;
+  }
+
+  .caption {
+    @apply text-sm text-text-muted;
+  }
+
+  .status-message {
+    @apply text-text;
+  }
+
+  /* =========================================
+     9. BUTTON VARIANTS & INTERACTIVE LINKS
+     ========================================= */
+  .btn-info {
+    @apply btn bg-info text-text-inverted hover:opacity-90;
+  }
+
+  .btn-success {
+    @apply btn bg-success text-text-inverted hover:opacity-90;
+  }
+
+  .btn-warning {
+    @apply btn bg-warning text-text-inverted hover:opacity-90;
+  }
+
+  .option-link {
+    @apply block rounded-lg border border-border px-5 py-4 text-lg font-medium text-text transition-colors hover:border-primary hover:bg-surface-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    --tw-ring-offset-color: var(--color-focus-offset);
+  }
+
+  .back-link {
+    @apply text-sm text-primary underline-offset-4 hover:underline;
+  }
+
+  /* =========================================
+     10. BADGES, ALERTS & EMPTY/ERROR STATES
+     ========================================= */
+  .badge-amber {
+    @apply badge bg-warning-bg text-warning-strong;
+  }
+
+  .badge-green {
+    @apply badge bg-success-bg text-success-strong;
+  }
+
+  .badge-blue {
+    @apply badge bg-info-bg text-info;
+  }
+
+  .badge-gray {
+    @apply badge bg-secondary text-text-muted;
+  }
+
+  .empty-state {
+    @apply text-text-muted;
+  }
+
+  .error-message {
+    @apply font-medium text-danger-strong;
+  }
+
+  .tooltip-anchor { @apply group relative inline-flex; }
+
+  .tooltip {
+    @apply pointer-events-none invisible absolute left-0 top-full z-50 mt-2 w-max max-w-xs rounded-md border border-border bg-surface px-3 py-2 text-sm text-text opacity-0 shadow-lg transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100;
+  }
+
+  /* =========================================
+     11. FORM CONTROLS
+     ========================================= */
+  .form-field { @apply space-y-1; }
+
+  .field-row { @apply flex items-start gap-2; }
+
+  .field-row > .input { @apply min-w-0 flex-1; }
+
+  .input-mono { @apply font-mono tracking-widest; }
+
+  .segmented-control {
+    @apply inline-flex overflow-hidden rounded-md border border-border bg-bg;
+  }
+
+  .segmented-option {
+    @apply block cursor-pointer px-5 py-2 text-sm text-text transition-colors hover:bg-surface-hover;
+  }
+
+  .segmented-option + .segmented-option {
+    @apply border-l border-border;
+  }
+
+  .segmented-input { @apply peer sr-only; }
+
+  .segmented-input:checked + .segmented-option {
+    @apply bg-primary text-text-inverted;
+  }
+
+  .segmented-input:focus-visible + .segmented-option {
+    @apply relative z-10 ring-2 ring-inset ring-ring;
+  }
+
+  /* =========================================
+     12. GAME UI
+     ========================================= */
+  .game-header { @apply flex items-start justify-between gap-4; }
+
+  .game-code-heading {
+    @apply font-mono text-3xl font-semibold tracking-widest text-text;
+  }
+
+  .stats-grid { @apply grid grid-cols-3 gap-4 text-sm; }
+
+  .stat-label { @apply text-text-muted; }
+  .stat-value { @apply font-medium capitalize text-text; }
+
+  .player-list-heading { @apply mb-1 text-sm font-medium text-text-muted; }
+
+  .player-list { @apply divide-y divide-border border-y border-border; }
+
+  .player-row { @apply flex items-center gap-3 py-3 text-text; }
+
+  .player-row-open { @apply text-text-muted; }
+
+  .player-score { @apply ml-auto text-sm tabular-nums text-text-muted; }
+
+  .number-badge {
+    @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-medium text-text-muted;
+  }
+
+  .number-badge-active { @apply bg-primary text-text-inverted; }
+
+  .game-board { @apply space-y-3; }
+
+  .game-board-grid { @apply grid w-full grid-cols-6 gap-2 sm:gap-3; }
+
+  .game-card {
+    @apply flex aspect-square min-w-0 flex-col items-center justify-center overflow-hidden rounded-xl border border-border bg-bg p-1 text-text-muted shadow-sm transition sm:rounded-2xl sm:p-2;
+  }
+
+  .game-card-hidden {
+    @apply cursor-pointer hover:-translate-y-0.5 hover:border-primary hover:shadow;
+  }
+
+  .game-card-revealed {
+    @apply border-warning/40 bg-warning-bg text-text;
+  }
+
+  .game-card:disabled { @apply cursor-not-allowed; }
+
+  .game-card-icon { @apply text-xl sm:text-2xl; }
+
+  .game-card-details { @apply mt-2 flex w-full flex-col space-y-1 text-left text-xs; }
+
+  .json-viewer { @apply text-sm text-text-muted; }
+
+  .json-viewer-summary { @apply cursor-pointer select-none; }
+
+  .json-viewer-content { @apply mt-2 overflow-x-auto rounded-md bg-surface p-3 text-xs text-text; }
+}
