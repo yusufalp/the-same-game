@@ -3,8 +3,8 @@ import { ROUTES } from "../../constants/routes";
 
 export default function ChooseMode() {
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-semibold">What would you like to do?</h1>
+    <div>
+      <h1>What would you like to do?</h1>
       <OptionLink
         to={ROUTES.host}
         title="Host a game"

@@ -9,7 +9,7 @@ export default function TurnInfo() {
   )?.player;
 
   return (
-    <dl className="grid grid-cols-3 gap-4 text-sm">
+    <dl>
       <Stat
         label="Turn"
         value={you?.isYourTurn ? "You" : (currentPlayer?.displayName ?? "None")}

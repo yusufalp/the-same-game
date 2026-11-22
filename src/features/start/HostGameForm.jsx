@@ -16,7 +16,7 @@ export default function HostGameForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit}>
       <SegmentedControl
         label="Number of players"
         options={PLAYER_OPTIONS}
@@ -24,7 +24,7 @@ export default function HostGameForm() {
         onChange={setMaxPlayers}
       />
 
-      <p className="text-sm text-neutral-500">
+      <p>
         {maxPlayers === 1
           ? "You play on your own."
           : "Play against a computer."}

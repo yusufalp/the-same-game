@@ -11,8 +11,8 @@ export default function GameStatus() {
   const { game, actionError } = useGame();
 
   return (
-    <div className="space-y-3">
-      <div className="flex flex-wrap items-center gap-2">
+    <div>
+      <div>
         <StartButton />
         <EndGameButton />
         {game.status === "finished" && (

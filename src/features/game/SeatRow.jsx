@@ -11,10 +11,10 @@ export default function SeatRow({ seat }) {
 
   if (!player) {
     return (
-      <li className="flex items-center gap-3 py-3 text-neutral-400">
+      <li>
         <NumberBadge number={seat.seat} />
         <span>Open seat</span>
-        <span className="ml-auto">
+        <span>
           <AddComputerButton />
         </span>
       </li>
@@ -27,20 +27,20 @@ export default function SeatRow({ seat }) {
   const points = `${player.score} ${player.score === 1 ? "point" : "points"}`;
 
   return (
-    <li className="flex items-center gap-3 py-3">
+    <li>
       <NumberBadge number={seat.seat} active={isCurrent} />
-      <span className="font-medium">{player.displayName}</span>
+      <span>{player.displayName}</span>
       {isYou && <Badge>You</Badge>}
       {player.isHost && <Badge>Host</Badge>}
       {player.isAi && <Badge>Computer</Badge>}
 
       {game.status === "playing" && (
-        <span className="ml-auto text-sm tabular-nums text-neutral-600">
+        <span>
           {points}
         </span>
       )}
       {game.status === "finished" && (
-        <span className="ml-auto text-sm tabular-nums text-neutral-600">
+        <span>
           {points}, {ordinal(player.placement)}
         </span>
       )}

@@ -9,7 +9,7 @@ const TONES = {
 
 export default function StatusBadge({ status }) {
   return (
-    <Badge tone={TONES[status] ?? "gray"} size="md" className="capitalize">
+    <Badge tone={TONES[status] ?? "gray"} size="md">
       {status}
     </Badge>
   );

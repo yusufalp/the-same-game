@@ -23,7 +23,7 @@ export default function CurrentGame() {
 
       {game.status === "playing" && <TurnInfo />}
 
-      <p className="text-neutral-700">{getStatusMessage(game, you)}</p>
+      <p>{getStatusMessage(game, you)}</p>
 
       {game.status === "playing" && <Board />}
 

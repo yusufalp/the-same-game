@@ -10,7 +10,7 @@ export default function GameLoadState() {
   if (!error || isRefreshing) {
     return (
       <PageContainer>
-        <p className="text-neutral-500">Loading game...</p>
+        <p>Loading game...</p>
       </PageContainer>
     );
   }
@@ -19,18 +19,16 @@ export default function GameLoadState() {
 
   return (
     <PageContainer>
-      <div role="alert" className="space-y-2">
-        <p className="font-medium text-red-700">{error.message}</p>
-        <p className="text-sm text-neutral-500">
+      <div role="alert">
+        <p>{error.message}</p>
+        <p>
           {notFound
             ? "Check the game code and try again."
             : "Try again in a moment."}
         </p>
-        <div className="flex items-center gap-4 pt-1">
+        <div>
           {!notFound && <Button onClick={() => refresh()}>Try again</Button>}
-          <Link to={ROUTES.start} className="text-sm underline">
-            Back to Start
-          </Link>
+          <Link to={ROUTES.start}>Back to Start</Link>
         </div>
       </div>
     </PageContainer>

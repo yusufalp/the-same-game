@@ -26,8 +26,8 @@ export default function EndGameButton() {
   };
 
   return (
-    <span className="flex items-center gap-2">
-      <span className="text-sm text-neutral-600">End this game?</span>
+    <span>
+      <span>End this game?</span>
       <Button disabled={isActing} onClick={handleEnd}>
         Yes, end it
       </Button>

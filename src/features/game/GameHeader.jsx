@@ -12,8 +12,8 @@ export default function GameHeader() {
         : "Against the computer";
 
   return (
-    <header className="flex items-start justify-between gap-4">
-      <h1 className="font-mono text-3xl font-semibold tracking-widest">
+    <header>
+      <h1>
         {title}
       </h1>
       <StatusBadge status={game.status} />

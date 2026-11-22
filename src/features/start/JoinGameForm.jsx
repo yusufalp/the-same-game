@@ -17,7 +17,7 @@ export default function JoinGameForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit}>
       <TextField
         label="Game code"
         hint={`Ask the host for the ${GAME_CODE_LENGTH}-character code or open the invite link they sent.`}
