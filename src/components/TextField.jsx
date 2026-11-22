@@ -19,12 +19,7 @@ export default function TextField({
       <div className="flex gap-2">
         <input
           id={inputId}
-          className={`
-            min-w-0 flex-1 rounded border border-neutral-300 
-            bg-white px-3 py-2 text-sm 
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 
-            ${inputClassName}
-          `}
+          className={`input min-w-0 flex-1 ${inputClassName}`}
           {...inputProps}
         />
         {children}

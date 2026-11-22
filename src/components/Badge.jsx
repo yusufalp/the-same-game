@@ -1,14 +1,16 @@
 const TONES = {
-  neutral: "bg-neutral-100 text-neutral-600",
-  gray: "bg-neutral-200 text-neutral-700",
-  amber: "bg-amber-100 text-amber-800",
-  green: "bg-green-100 text-green-800",
-  blue: "bg-blue-100 text-blue-800",
+  neutral: "badge-neutral",
+  gray: "badge-gray",
+  amber: "badge-amber",
+  green: "badge-green",
+  blue: "badge-blue",
 };
 
 const SIZES = {
-  sm: "rounded px-1.5 py-0.5 text-xs",
-  md: "rounded-full px-3 py-1 text-sm font-medium",
+  xs: "badge-xs",
+  sm: "badge-sm",
+  md: "badge-md",
+  lg: "badge-lg",
 };
 
 export default function Badge({
@@ -18,7 +20,7 @@ export default function Badge({
   className = "",
 }) {
   return (
-    <span className={`${SIZES[size]} ${TONES[tone]} ${className}`}>
+    <span className={`badge ${TONES[tone]} ${SIZES[size]} ${className}`}>
       {children}
     </span>
   );
