@@ -185,6 +185,18 @@
     @apply bg-danger text-text-inverted hover:opacity-90;
   }
 
+  .btn-info {
+    @apply bg-info text-text-inverted hover:opacity-90;
+  }
+
+  .btn-success {
+    @apply bg-success text-text-inverted hover:opacity-90;
+  }
+
+  .btn-warning {
+    @apply bg-warning text-text-inverted hover:opacity-90;
+  }
+
   /* Sizes (Pair with any variant, e.g., "btn-primary btn-sm") */
   .btn-xs {
     @apply px-2.5 py-1 text-xs;
@@ -235,6 +247,10 @@
 
   .error-text {
     @apply text-xs font-medium text-danger;
+  }
+
+  .error-message {
+    @apply font-medium text-danger-strong;
   }
 
   /* =========================================
@@ -292,16 +308,20 @@
     @apply bg-danger-bg text-danger;
   }
 
-  .placement-1 {
-    @apply bg-amber-200 text-amber-900;
+  .badge-amber {
+    @apply bg-warning-bg text-warning-strong;
   }
 
-  .placement-2 {
-    @apply bg-slate-200 text-slate-800;
+  .badge-green {
+    @apply bg-success-bg text-success-strong;
   }
 
-  .placement-3 {
-    @apply bg-orange-200 text-orange-900;
+  .badge-blue {
+    @apply bg-info-bg text-info;
+  }
+
+  .badge-gray {
+    @apply bg-secondary text-text-muted;
   }
 
   /* =========================================
@@ -367,12 +387,13 @@
   }
 
   /* =========================================
-     8. COMMON APP LAYOUTS & CONTENT
+     8. LAYOUT HELPERS
      ========================================= */
-  .inline-actions {
+  .flex-wrap-center {
     @apply flex flex-wrap items-center gap-2;
   }
-  .inline-actions-spread {
+
+  .flex-justify-between {
     @apply flex items-center justify-between gap-4;
   }
 
@@ -393,45 +414,10 @@
   }
 
   /* =========================================
-     9. BUTTON VARIANTS & INTERACTIVE LINKS
+     9. LINKS, TOOLTIPS & REUSABLE COMPONENTS
      ========================================= */
-  .btn-info {
-    @apply bg-info text-text-inverted hover:opacity-90;
-  }
-
-  .btn-success {
-    @apply bg-success text-text-inverted hover:opacity-90;
-  }
-
-  .btn-warning {
-    @apply bg-warning text-text-inverted hover:opacity-90;
-  }
-
   .back-link {
     @apply text-sm text-primary underline-offset-4 hover:underline;
-  }
-
-  /* =========================================
-     10. BADGES, ALERTS & EMPTY/ERROR STATES
-     ========================================= */
-  .badge-amber {
-    @apply bg-warning-bg text-warning-strong;
-  }
-
-  .badge-green {
-    @apply bg-success-bg text-success-strong;
-  }
-
-  .badge-blue {
-    @apply bg-info-bg text-info;
-  }
-
-  .badge-gray {
-    @apply bg-secondary text-text-muted;
-  }
-
-  .error-message {
-    @apply font-medium text-danger-strong;
   }
 
   .tooltip-anchor {
@@ -442,14 +428,38 @@
     @apply pointer-events-none invisible absolute left-0 top-full z-50 mt-2 w-max max-w-xs rounded-md border border-border bg-surface px-3 py-2 text-sm text-text opacity-0 shadow-lg transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100;
   }
 
+  .json-viewer {
+    @apply text-sm text-text-muted;
+  }
+
+  .json-viewer-summary {
+    @apply cursor-pointer select-none;
+  }
+
+  .json-viewer-content {
+    @apply mt-2 overflow-x-auto rounded-md bg-surface p-3 text-xs text-text;
+  }
+
+  .stats-grid {
+    @apply grid grid-cols-3 gap-4 text-sm;
+  }
+
+  .stat-label {
+    @apply text-text-muted;
+  }
+
+  .stat-value {
+    @apply font-medium capitalize text-text;
+  }
+
   /* =========================================
-     11. FORM CONTROLS
+     10. FORM CONTROLS
      ========================================= */
-  .field-row {
+  .flex-items-start-gap {
     @apply flex items-start gap-2;
   }
 
-  .field-row > .input {
+  .flex-items-start-gap > .input {
     @apply min-w-0 flex-1;
   }
 
@@ -490,25 +500,26 @@
   }
 
   /* =========================================
-     12. GAME UI
+     11. GAME-SPECIFIC STYLES
      ========================================= */
+  .placement-1 {
+    @apply bg-amber-200 text-amber-900;
+  }
+
+  .placement-2 {
+    @apply bg-slate-200 text-slate-800;
+  }
+
+  .placement-3 {
+    @apply bg-orange-200 text-orange-900;
+  }
+
   .game-header {
     @apply flex items-start justify-between gap-4;
   }
 
   .game-code-heading {
     @apply font-mono text-3xl font-semibold tracking-widest text-text;
-  }
-
-  .stats-grid {
-    @apply grid grid-cols-3 gap-4 text-sm;
-  }
-
-  .stat-label {
-    @apply text-text-muted;
-  }
-  .stat-value {
-    @apply font-medium capitalize text-text;
   }
 
   .player-list-heading {
@@ -559,15 +570,4 @@
     @apply mt-2 flex w-full flex-col space-y-1 text-left text-xs;
   }
 
-  .json-viewer {
-    @apply text-sm text-text-muted;
-  }
-
-  .json-viewer-summary {
-    @apply cursor-pointer select-none;
-  }
-
-  .json-viewer-content {
-    @apply mt-2 overflow-x-auto rounded-md bg-surface p-3 text-xs text-text;
-  }
 }

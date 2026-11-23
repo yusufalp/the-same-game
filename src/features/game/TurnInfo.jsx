@@ -9,7 +9,7 @@ export default function TurnInfo() {
   )?.player;
 
   return (
-    <dl className="inline-actions-spread">
+    <dl className="flex-justify-between">
       <Stat
         label="Turn"
         value={you?.isYourTurn ? "You" : (currentPlayer?.displayName ?? "None")}

@@ -26,7 +26,7 @@ export default function EndGameButton() {
   };
 
   return (
-    <span className="inline-actions">
+    <span className="flex-wrap-center">
       <span>End this game?</span>
       <Button disabled={isActing} onClick={handleEnd}>
         Yes, end it

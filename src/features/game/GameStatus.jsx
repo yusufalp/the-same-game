@@ -14,7 +14,7 @@ export default function GameStatus() {
 
   return (
     <div>
-      <div className="inline-actions-spread">
+      <div className="flex-justify-between">
         <StartButton />
         <EndGameButton />
 

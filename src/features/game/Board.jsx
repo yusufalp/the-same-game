@@ -18,7 +18,7 @@ export default function Board() {
 
   return (
     <section aria-label="Game board">
-      <div className="inline-actions-spread">
+      <div className="flex-justify-between">
         {you?.isYourTurn && (
           <Button onClick={spin} disabled={isActing || game.spin !== null}>
             {game.spin === null ? "Spin" : "Waiting turn"}

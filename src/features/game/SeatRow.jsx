@@ -28,7 +28,7 @@ export default function SeatRow({ seat }) {
   const points = `${player.score} ${player.score === 1 ? "point" : "points"}`;
 
   return (
-    <li className="inline-actions-spread">
+    <li className="flex-justify-between">
       <div className="player-row">
         <Badge
           tone="gray"
@@ -44,7 +44,7 @@ export default function SeatRow({ seat }) {
       <div>
         {game.status === "playing" && <span>{points}</span>}
         {game.status === "finished" && (
-          <div className="inline-actions">
+          <div className="flex-wrap-center">
             <span>{points}</span>
             {player.placement >= 1 && player.placement <= 3 && (
               <Badge
