@@ -13,14 +13,27 @@ const SIZES = {
   lg: "badge-lg",
 };
 
+const ALIGNMENTS = {
+  left: "badge-align-left",
+  right: "badge-align-right",
+  center: "badge-align-center",
+};
+
 export default function Badge({
   children,
   tone = "neutral",
   size = "sm",
+  width,
+  align = "left",
   className = "",
 }) {
+  const alignmentClass = width == null ? "" : ALIGNMENTS[align];
+
   return (
-    <span className={`badge ${TONES[tone]} ${SIZES[size]} ${className}`}>
+    <span
+      className={`badge ${TONES[tone]} ${SIZES[size]} ${alignmentClass} ${className}`}
+      style={width == null ? undefined : { width }}
+    >
       {children}
     </span>
   );

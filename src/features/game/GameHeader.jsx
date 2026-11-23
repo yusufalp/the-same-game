@@ -12,8 +12,8 @@ export default function GameHeader() {
         : "Against the computer";
 
   return (
-    <header>
-      <h1>
+    <header className="game-header">
+      <h1 className="h1">
         {title}
       </h1>
       <StatusBadge status={game.status} />

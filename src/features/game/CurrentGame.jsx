@@ -8,10 +8,9 @@ import GameStatus from "./GameStatus";
 import PlayerList from "./PlayerList";
 import TurnInfo from "./TurnInfo";
 import Board from "./Board";
-import getStatusMessage from "../../utils/getStatusMessage";
 
 export default function CurrentGame() {
-  const { game, you } = useGame();
+  const { game } = useGame();
 
   useComputerAutoplay();
 
@@ -22,9 +21,6 @@ export default function CurrentGame() {
       <GameHeader />
 
       {game.status === "playing" && <TurnInfo />}
-
-      <p>{getStatusMessage(game, you)}</p>
-
       {game.status === "playing" && <Board />}
 
       <PlayerList />

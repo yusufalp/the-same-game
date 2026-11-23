@@ -1,5 +1,4 @@
 import Badge from "../../components/Badge";
-import NumberBadge from "../../components/NumberBadge";
 import useGame from "../../hooks/useGame";
 import AddComputerButton from "./AddComputerButton";
 
@@ -11,9 +10,11 @@ export default function SeatRow({ seat }) {
 
   if (!player) {
     return (
-      <li>
-        <NumberBadge number={seat.seat} />
-        <span>Open seat</span>
+      <li className="player-row">
+        <Badge tone="gray" className="number-badge">
+          {seat.seat}
+        </Badge>
+        <span className="text-text-muted">Open seat</span>
         <span>
           <AddComputerButton />
         </span>
@@ -27,23 +28,36 @@ export default function SeatRow({ seat }) {
   const points = `${player.score} ${player.score === 1 ? "point" : "points"}`;
 
   return (
-    <li>
-      <NumberBadge number={seat.seat} active={isCurrent} />
-      <span>{player.displayName}</span>
-      {isYou && <Badge>You</Badge>}
-      {player.isHost && <Badge>Host</Badge>}
-      {player.isAi && <Badge>Computer</Badge>}
-
-      {game.status === "playing" && (
-        <span>
-          {points}
-        </span>
-      )}
-      {game.status === "finished" && (
-        <span>
-          {points}, {ordinal(player.placement)}
-        </span>
-      )}
+    <li className="inline-actions-spread">
+      <div className="player-row">
+        <Badge
+          tone="gray"
+          className={`number-badge ${isCurrent ? "number-badge-active" : ""}`}
+        >
+          {seat.seat}
+        </Badge>
+        <span>{player.displayName}</span>
+        {isYou && <Badge>You</Badge>}
+        {player.isHost && <Badge>Host</Badge>}
+        {player.isAi && <Badge>Computer</Badge>}
+      </div>
+      <div>
+        {game.status === "playing" && <span>{points}</span>}
+        {game.status === "finished" && (
+          <div className="inline-actions">
+            <span>{points}</span>
+            {player.placement >= 1 && player.placement <= 3 && (
+              <Badge
+                width="3rem"
+                align="center"
+                className={`placement-${player.placement}`}
+              >
+                {ordinal(player.placement)}
+              </Badge>
+            )}
+          </div>
+        )}
+      </div>
     </li>
   );
 }

@@ -9,7 +9,7 @@ export default function TurnInfo() {
   )?.player;
 
   return (
-    <dl>
+    <dl className="inline-actions-spread">
       <Stat
         label="Turn"
         value={you?.isYourTurn ? "You" : (currentPlayer?.displayName ?? "None")}

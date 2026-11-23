@@ -6,9 +6,9 @@ import { ROUTES } from "../constants/routes";
 export default function StartLayout() {
   return (
     <PageContainer>
-      <header>
+      <h1 className="h1">
         <Link to={ROUTES.start}>The Same Game</Link>
-      </header>
+      </h1>
       <Outlet />
     </PageContainer>
   );

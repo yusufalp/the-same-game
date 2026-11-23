@@ -41,7 +41,7 @@
 /* === DARK MODE OVERRIDES === */
 .dark {
   /* Backgrounds & Surfaces */
-  --color-bg: #09090b; /* Deep neutral dark */
+  --color-bg: #373737; /* Deep neutral dark */
   --color-surface: #18181b; /* Slightly elevated card surface */
   --color-surface-hover: #27272a; /* Hover state */
 
@@ -260,6 +260,18 @@
     @apply px-3.5 py-1.5 text-base;
   }
 
+  .badge-align-left {
+    @apply justify-start;
+  }
+
+  .badge-align-right {
+    @apply justify-end;
+  }
+
+  .badge-align-center {
+    @apply justify-center;
+  }
+
   .badge-neutral {
     @apply bg-secondary text-text;
   }
@@ -278,6 +290,18 @@
 
   .badge-danger {
     @apply bg-danger-bg text-danger;
+  }
+
+  .placement-1 {
+    @apply bg-amber-200 text-amber-900;
+  }
+
+  .placement-2 {
+    @apply bg-slate-200 text-slate-800;
+  }
+
+  .placement-3 {
+    @apply bg-orange-200 text-orange-900;
   }
 
   /* =========================================
@@ -383,11 +407,6 @@
     @apply bg-warning text-text-inverted hover:opacity-90;
   }
 
-  .option-link {
-    @apply block rounded-lg border border-border px-5 py-4 text-lg font-medium text-text transition-colors hover:border-primary hover:bg-surface-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-    --tw-ring-offset-color: var(--color-focus-offset);
-  }
-
   .back-link {
     @apply text-sm text-primary underline-offset-4 hover:underline;
   }
@@ -447,7 +466,7 @@
   }
 
   .segmented-label {
-    @apply mb-1 text-sm text-text-muted;
+    @apply mb-1 text-sm text-text;
   }
 
   .segmented-control input {
@@ -509,7 +528,7 @@
   }
 
   .number-badge {
-    @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-medium text-text-muted;
+    @apply h-6 w-6 shrink-0 justify-center p-0;
   }
 
   .number-badge-active {

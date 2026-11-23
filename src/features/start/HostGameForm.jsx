@@ -16,19 +16,21 @@ export default function HostGameForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <SegmentedControl
-        label="Number of players"
-        options={PLAYER_OPTIONS}
-        value={maxPlayers}
-        onChange={setMaxPlayers}
-      />
+    <form onSubmit={handleSubmit} className="flex-row space-y-9">
+      <div>
+        <SegmentedControl
+          label="Number of players"
+          options={PLAYER_OPTIONS}
+          value={maxPlayers}
+          onChange={setMaxPlayers}
+        />
 
-      <p>
-        {maxPlayers === 1
-          ? "You play on your own."
-          : "Play against a computer."}
-      </p>
+        <p className="caption">
+          {maxPlayers === 1
+            ? "You play on your own."
+            : "Play against a computer."}
+        </p>
+      </div>
 
       {error && <Alert>{error.message}</Alert>}
 

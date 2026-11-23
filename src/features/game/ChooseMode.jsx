@@ -1,20 +1,24 @@
-import OptionLink from "../../components/OptionLink";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button";
+import Tooltip from "../../components/Tooltip";
 import { ROUTES } from "../../constants/routes";
 
 export default function ChooseMode() {
+  const navigate = useNavigate();
+
   return (
     <div>
       <h1>What would you like to do?</h1>
-      <OptionLink
-        to={ROUTES.host}
-        title="Host a game"
-        description="Choose how many people play, then share a link."
-      />
-      <OptionLink
-        to={ROUTES.join}
-        title="Join a game"
-        description="Enter the code a host gave you."
-      />
+      <Tooltip content="Choose how many people play, then share a link.">
+        <Button variant="secondary" onClick={() => navigate(ROUTES.host)}>
+          Host a game
+        </Button>
+      </Tooltip>
+      <Tooltip content="Enter the code a host gave you.">
+        <Button variant="secondary" onClick={() => navigate(ROUTES.join)}>
+          Join a game
+        </Button>
+      </Tooltip>
     </div>
   );
 }

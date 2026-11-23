@@ -3,7 +3,7 @@ export default function CardDetails({ card }) {
   if (typeof card !== "object") return <span>{String(card)}</span>;
 
   return (
-    <dl>
+    <dl className="game-card-details">
       <p>{`${card.number} ${card.color} ${card.name}`}</p>
       <p>{card.category}</p>
     </dl>

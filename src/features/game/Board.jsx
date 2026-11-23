@@ -18,8 +18,7 @@ export default function Board() {
 
   return (
     <section aria-label="Game board">
-      <h2>Board</h2>
-      <div>
+      <div className="inline-actions-spread">
         {you?.isYourTurn && (
           <Button onClick={spin} disabled={isActing || game.spin !== null}>
             {game.spin === null ? "Spin" : "Waiting turn"}
@@ -38,7 +37,7 @@ export default function Board() {
             ? "Both cards are revealed. End your turn to check for a match."
             : "Choose cards to reveal them."}
       </p>
-      <div>
+      <div className="game-board-grid">
         {board.map((slot) => (
           <GameCard
             key={slot.slot}

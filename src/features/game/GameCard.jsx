@@ -9,6 +9,7 @@ export default function GameCard({ slot, canFlip, onFlip }) {
       type="button"
       onClick={() => onFlip(slot.slot)}
       disabled={!canFlip || revealed}
+      className={`game-card disabled:cursor-not-allowed ${revealed ? "game-card-revealed" : "game-card-hidden"}`}
       aria-label={
         revealed ? `Card ${slot.slot}, revealed` : `Flip card ${slot.slot}`
       }
@@ -16,7 +17,7 @@ export default function GameCard({ slot, canFlip, onFlip }) {
       {revealed ? (
         <CardDetails card={slot.card} />
       ) : (
-        <span aria-hidden="true">
+        <span aria-hidden="true" className="game-card-icon">
           {CARD_ICONS[(slot.slot * 7) % CARD_ICONS.length]}
         </span>
       )}
