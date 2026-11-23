@@ -398,7 +398,7 @@
   }
 
   .page-container {
-    @apply mx-auto w-full max-w-xl space-y-8 px-4 py-10 text-text;
+    @apply mx-auto w-full max-w-xl space-y-8 px-4 pb-10 pt-24 text-text;
   }
 
   .page-heading {
@@ -488,7 +488,27 @@
   }
 
   .segmented-option {
-    @apply block cursor-pointer px-5 py-2 text-sm text-text transition-colors hover:bg-surface-hover;
+    @apply block cursor-pointer text-text transition-colors hover:bg-surface-hover;
+  }
+
+  .segmented-option-xs {
+    @apply px-2 py-1 text-xs;
+  }
+
+  .segmented-option-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .segmented-option-md {
+    @apply px-5 py-2 text-sm;
+  }
+
+  .segmented-option-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  .segmented-option-xl {
+    @apply px-8 py-4 text-lg;
   }
 
   .segmented-control input:checked + .segmented-option {
@@ -497,6 +517,10 @@
 
   .segmented-control input:focus-visible + .segmented-option {
     @apply relative z-10 ring-2 ring-inset ring-ring;
+  }
+
+  .theme-toggler {
+    @apply fixed right-1 top-1 z-50;
   }
 
   /* =========================================
@@ -569,5 +593,4 @@
   .game-card-details {
     @apply mt-2 flex w-full flex-col space-y-1 text-left text-xs;
   }
-
 }

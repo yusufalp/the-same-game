@@ -1,6 +1,20 @@
 import { useId } from "react";
 
-export default function SegmentedControl({ label, options, value, onChange }) {
+const SIZES = {
+  xs: "segmented-option-xs",
+  sm: "segmented-option-sm",
+  md: "segmented-option-md",
+  lg: "segmented-option-lg",
+  xl: "segmented-option-xl",
+};
+
+export default function SegmentedControl({
+  label,
+  options,
+  value,
+  onChange,
+  size = "sm",
+}) {
   const name = useId();
 
   return (
@@ -17,7 +31,9 @@ export default function SegmentedControl({ label, options, value, onChange }) {
               onChange={() => onChange(option.value)}
               className="input"
             />
-            <span className="segmented-option">{option.label}</span>
+            <span className={`segmented-option ${SIZES[size]}`}>
+              {option.label}
+            </span>
           </label>
         ))}
       </div>

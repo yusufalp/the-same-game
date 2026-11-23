@@ -19,7 +19,7 @@ export default function HostGameForm() {
     <form onSubmit={handleSubmit} className="flex-row space-y-9">
       <div>
         <SegmentedControl
-          label="Number of players"
+          label="Game mode"
           options={PLAYER_OPTIONS}
           value={maxPlayers}
           onChange={setMaxPlayers}

@@ -3,13 +3,15 @@ import useGame from "../../hooks/useGame";
 import useStartGame from "../../hooks/useStartGame";
 
 export default function StartButton() {
-  const { you, isActing } = useGame();
+  const { game, you, isActing } = useGame();
   const startGame = useStartGame();
-
-  if (!you?.canStart) return null;
+  const canStart =
+    you?.isHost &&
+    (game.status === "waiting" || game.status === "ready") &&
+    you.canStart;
 
   return (
-    <Button disabled={isActing} onClick={() => startGame()}>
+    <Button disabled={isActing || !canStart} onClick={() => startGame()}>
       Start Game
     </Button>
   );
